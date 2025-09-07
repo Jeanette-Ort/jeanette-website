@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tu Nombre – Página personal</title>
+  <meta name="description" content="Página personal académica y profesional: intereses de investigación, educación, experiencia, publicaciones, proyectos y contacto." />
+  <meta name="theme-color" content="#f8bbd9" />
+  <meta property="og:title" content="Tu Nombre – Página personal" />
+  <meta property="og:description" content="Investigación, docencia y proyectos." />
+  <meta property="og:type" content="website" />
+  <style>
+    /* —— Diseño base accesible, responsive y con dark mode —— */
+    :root{
+      --bg:#fef7f7; --fg:#2d1b2e; --muted:#8b5a6b; --line:#f4c2c2; --chip:#fce4ec; --accent:#f8bbd9;
+      --radius: 1.5rem;
+      --gradient: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 50%, #f48fb1 100%);
+      --shadow: 0 4px 20px rgba(244, 143, 177, 0.15);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{ --bg:#2d1b2e; --fg:#fce4ec; --muted:#d4a5b8; --line:#4a2c3a; --chip:#3d2a3d; --accent:#f8bbd9; }
+    }
+    *{ box-sizing: border-box }
+    html, body{ height:100% }
+    body{ 
+      margin:0; 
+      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; 
+      background: linear-gradient(135deg, #fef7f7 0%, #fce4ec 100%);
+      color:var(--fg); 
+      line-height:1.6;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 80%, rgba(248, 187, 217, 0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(244, 143, 177, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+    a{ color: var(--accent); text-decoration: none; transition: all 0.3s ease; }
+    a:hover{ color: #f48fb1; transform: translateY(-1px); }
+    img{ max-width:100%; height:auto; border-radius: 1rem; box-shadow: var(--shadow); }
+    .wrap{ max-width: 1024px; margin: 0 auto; padding: 1.25rem }
+
+    /* —— Navegación —— */
+    header{ 
+      position: sticky; 
+      top:0; 
+      z-index:10; 
+      backdrop-filter: saturate(1.1) blur(15px); 
+      background: rgba(254, 247, 247, 0.9); 
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 2px 20px rgba(244, 143, 177, 0.1);
+    }
+    .nav{ display:flex; justify-content: space-between; align-items:center; gap:1rem }
+    .brand a{ 
+      text-decoration:none; 
+      color:var(--fg); 
+      font-weight:800; 
+      font-size: 1.2rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .menus{ display:flex; flex-wrap:wrap; gap:.5rem }
+    .menus a{ 
+      text-decoration:none; 
+      color:var(--muted); 
+      padding:.6rem 1rem; 
+      border-radius: 2rem;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    .menus a[aria-current="page"], .menus a:hover{ 
+      background: var(--gradient); 
+      color: white; 
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    /* —— Hero —— */
+    .hero{ 
+      display:grid; 
+      grid-template-columns: 180px 1fr; 
+      gap:2rem; 
+      align-items:center; 
+      padding:2rem 0; 
+      background: linear-gradient(135deg, rgba(252, 228, 236, 0.3) 0%, rgba(248, 187, 217, 0.2) 100%);
+      border-radius: var(--radius);
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+    }
+    .avatar{ 
+      width:180px; 
+      aspect-ratio:1; 
+      object-fit:cover; 
+      background: var(--gradient); 
+      border: 3px solid rgba(248, 187, 217, 0.3);
+      border-radius: 50%;
+      box-shadow: 0 8px 32px rgba(244, 143, 177, 0.2);
+      transition: transform 0.3s ease;
+    }
+    .avatar:hover {
+      transform: scale(1.05);
+    }
+    .hero h1{ 
+      font-size: clamp(1.8rem, 2.5vw + 1.4rem, 2.8rem); 
+      margin:.25rem 0;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+    .subtitle{ 
+      color:var(--muted); 
+      margin:0; 
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    .badges{ display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1rem }
+    .chip{ 
+      display:inline-block; 
+      background: var(--gradient); 
+      color: white; 
+      border: none; 
+      padding:.4rem 1rem; 
+      border-radius: 2rem; 
+      font-size:.9rem;
+      font-weight: 500;
+      box-shadow: 0 2px 10px rgba(244, 143, 177, 0.2);
+      transition: all 0.3s ease;
+    }
+    .chip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(244, 143, 177, 0.3);
+    }
+
+    /* —— Secciones —— */
+    h2.section{ 
+      font-size:1.1rem; 
+      letter-spacing:.1em; 
+      color:var(--muted); 
+      text-transform:uppercase; 
+      margin:2rem 0 1rem;
+      font-weight: 600;
+      position: relative;
+    }
+    h2.section::after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem;
+      left: 0;
+      width: 3rem;
+      height: 2px;
+      background: var(--gradient);
+      border-radius: 1px;
+    }
+    .card{ 
+      border: none; 
+      border-radius: var(--radius); 
+      padding:1.5rem; 
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(244, 143, 177, 0.2);
+    }
+    .grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap:1.5rem }
+    .span-4{ grid-column: span 4 }
+    .span-8{ grid-column: span 8 }
+
+    /* —— Timeline —— */
+    .timeline{ 
+      position:relative; 
+      margin-left:1rem; 
+      padding-left:1.5rem;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+    .timeline:before{ 
+      content:""; 
+      position:absolute; 
+      left:0; 
+      top:.5rem; 
+      bottom:.5rem; 
+      width:3px; 
+      background: var(--gradient);
+      border-radius: 2px;
+    }
+    .item{ 
+      position:relative; 
+      padding:1.5rem 0;
+      background: rgba(255, 255, 255, 0.6);
+      margin-bottom: 1rem;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 2px 10px rgba(244, 143, 177, 0.1);
+      transition: all 0.3s ease;
+    }
+    .item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 20px rgba(244, 143, 177, 0.15);
+    }
+    .item:before{ 
+      content:""; 
+      position:absolute; 
+      left:-1.5rem; 
+      top:2rem; 
+      width:1rem; 
+      height:1rem; 
+      border-radius:50%; 
+      background: var(--gradient);
+      border: 3px solid white;
+      box-shadow: 0 2px 10px rgba(244, 143, 177, 0.3);
+    }
+    .head{ display:flex; align-items:baseline; justify-content:space-between; gap:1rem; flex-wrap:wrap }
+    .title{ font-weight:700; margin:0; color: var(--fg); }
+    .meta{ color:var(--muted); font-size:.95rem; font-weight: 500; }
+    .list{ margin:.6rem 0 0 1.2rem }
+    .list li{ margin:.4rem 0; line-height: 1.6; }
+
+    /* —— Footer —— */
+    footer{ 
+      border-top: 1px solid var(--line); 
+      margin-top:3rem; 
+      padding:2rem 0; 
+      color:var(--muted);
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* —— Responsive —— */
+    @media (max-width: 720px){
+      .hero{ 
+        grid-template-columns: 1fr; 
+        text-align:center;
+        padding: 1.5rem;
+        gap: 1.5rem;
+      }
+      .avatar {
+        width: 150px;
+        margin: 0 auto;
+      }
+      .badges{ justify-content:center }
+      .grid{ grid-template-columns: 1fr }
+      .span-4, .span-8{ grid-column: auto }
+      .head{ flex-direction: column; align-items:flex-start }
+      .timeline {
+        margin-left: 0.5rem;
+        padding-left: 1rem;
+      }
+      .item:before {
+        left: -1.25rem;
+      }
+    }
+
+    /* —— Impresión —— */
+    @media print{
+      header, .menus{ display:none }
+      .wrap{ max-width:100% }
+      a{ color:inherit; text-decoration:none }
+    }
+  </style>
+  <!-- Datos estructurados básicos -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Tu Nombre",
+    "jobTitle": "Estudiante de Economía / Investigadora",
+    "email": "mailto:correo@dominio.com",
+    "telephone": "+52 000 000 0000",
+    "address": {"@type":"PostalAddress","addressLocality":"Ciudad de México","addressCountry":"MX"},
+    "url": "https://tusitio.com/"
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand"><a href="index.html">Tu Nombre</a></div>
+      <nav class="menus" aria-label="principal">
+        <a href="#about" aria-current="page">Inicio</a>
+        <a href="#research">Intereses</a>
+        <a href="#education">Educación</a>
+        <a href="#experience">Experiencia</a>
+        <a href="#publications">Publicaciones</a>
+        <a href="#projects">Proyectos</a>
+        <a href="#contacto">Contacto</a>
+        <a href="cv.pdf" download>CV</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- —— Encabezado / About —— -->
+    <section id="about" class="hero" aria-label="presentación">
+      <!-- Opcional: coloca tu foto en /img/foto.jpg y descomenta la línea siguiente -->
+      <!-- <img class="avatar" src="img/foto.jpg" alt="Retrato de Tu Nombre"> -->
+      <img class="avatar" alt="Avatar" src="data:image/svg+xml;utf8,\
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%23fce4ec;stop-opacity:1' /><stop offset='50%' style='stop-color:%23f8bbd9;stop-opacity:1' /><stop offset='100%' style='stop-color:%23f48fb1;stop-opacity:1' /></linearGradient></defs><rect width='100%' height='100%' fill='url(%23grad)' rx='100'/><circle cx='100' cy='80' r='25' fill='white' opacity='0.8'/><circle cx='100' cy='120' r='35' fill='white' opacity='0.6'/><text x='50%' y='170' font-size='14' font-family='Arial, Helvetica, sans-serif' text-anchor='middle' fill='white' font-weight='bold'>✨ Tu Foto ✨</text></svg>"> 
+      <div>
+        <h1>Tu Nombre</h1>
+        <p class="subtitle">Estudiante de Economía (UNAM) · Investigación aplicada · Docencia</p>
+        <div class="badges" aria-label="áreas e intereses">
+          <span class="chip">Política fiscal</span>
+          <span class="chip">Economía laboral</span>
+          <span class="chip">Econometría</span>
+          <span class="chip">Brecha salarial de género</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- —— Intereses de investigación —— -->
+    <h2 id="research" class="section">Intereses de investigación</h2>
+    <section class="card">
+      <p>Trabajo temas de <strong>política fiscal</strong>, <strong>mercado laboral</strong>, <strong>informalidad</strong> y <strong>desigualdades de género</strong>. Me interesan especialmente los efectos distributivos de impuestos y transferencias, y la evaluación de políticas públicas con microdatos (ENOE, ENIGH).</p>
+    </section>
+
+    <!-- —— Educación —— -->
+    <h2 id="education" class="section">Educación</h2>
+    <section class="timeline" aria-label="línea de tiempo de educación">
+      <article class="item">
+        <div class="head">
+          <h3 class="title"><a href="https://www.economia.unam.mx/" target="_blank" rel="noopener">Facultad de Economía, UNAM</a></h3>
+          <div class="meta">Licenciatura en Economía · 2021 – 2026 · Promedio 9.7/10 · CDMX</div>
+        </div>
+        <p><strong>Tesis:</strong> La evolución del gasto fiscal etiquetado con género y su efecto en la participación laboral de las mujeres (2008–2022). <em>Asesora: Mtra. Daniela V. García Pureco.</em></p>
+        <ul class="list">
+          <li>Cursos relevantes: Macroeconomía I & II, Temas Selectos de Macroeconomía, Política Fiscal, Econometría II.</li>
+        </ul>
+      </article>
+      <article class="item">
+        <div class="head">
+          <h3 class="title"><a href="https://cee.colmex.mx/" target="_blank" rel="noopener">El Colegio de México (CEE)</a></h3>
+          <div class="meta">Intercambio académico · Ago 2024 – Dic 2024 · CDMX</div>
+        </div>
+        <ul class="list">
+          <li>Cursos: Economía Pública, Econometría I, Macroeconomía III.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- —— Experiencia —— -->
+    <h2 id="experience" class="section">Experiencia</h2>
+    <section class="timeline" aria-label="trayectoria">
+      <article class="item">
+        <div class="head">
+          <h3 class="title">Banco de México – Servicio Social</h3>
+          <div class="meta">May 2025 – Actualidad · CDMX</div>
+        </div>
+        <p>Gerencia de Supervisión de Sistemas de Pagos e Infraestructuras de Mercados. Automatización de requerimientos y evaluación de información con Python.</p>
+      </article>
+      <article class="item">
+        <div class="head">
+          <h3 class="title">Facultad de Economía, UNAM – Profesora Adjunta</h3>
+          <div class="meta">Ago 2025 – Actualidad · CDMX</div>
+        </div>
+        <p>Introducción a la Teoría Económica (Dra. Ana Sofía Malagamba Morán). Elaboración de material visual y apoyo didáctico.</p>
+      </article>
+      <article class="item">
+        <div class="head">
+          <h3 class="title">Facultad de Economía, UNAM – Profesora Adjunta</h3>
+          <div class="meta">Ene 2025 – Jul 2025 · CDMX</div>
+        </div>
+        <p>Economía Mexicana II (Mtro. Édgar Amador Zamora). Gestión académica y apoyo en clase.</p>
+      </article>
+      <article class="item">
+        <div class="head">
+          <h3 class="title">PUED, UNAM – Becaria (IDM 2025)</h3>
+          <div class="meta">Feb 2025 – May 2025 · CDMX</div>
+        </div>
+        <p>Integración/actualización de bases (ENIGH, ENOE), variables económicas y revisión de literatura para el Informe de Desarrollo en México 2025.</p>
+      </article>
+    </section>
+
+    <!-- —— Publicaciones y ponencias —— -->
+    <h2 id="publications" class="section">Publicaciones y ponencias</h2>
+    <section class="card">
+      <ul class="list">
+        <li><strong>Panelista</strong>, Escuela Feminista de Verano – Especialización en Economía (Jun 2025): “Impactos macroeconómicos en las brechas de género”.</li>
+        <!-- Agrega papers, working papers o reseñas aquí -->
+      </ul>
+    </section>
+
+    <!-- —— Proyectos —— -->
+    <h2 id="projects" class="section">Proyectos</h2>
+    <section class="grid">
+      <div class="span-8 card">
+        <h3 class="title" style="margin-top:0">Tesis de licenciatura</h3>
+        <p>Identifica componentes de política fiscal con perspectiva de género y estima el efecto del gasto etiquetado en la participación laboral femenina (2008–2022).</p>
+      </div>
+      <div class="span-4 card">
+        <h3 class="title" style="margin-top:0">Datos & código</h3>
+        <ul class="list">
+          <li>Python y R para microdatos (ENOE/ENIGH).</li>
+          <li>Automatización de reportes (Excel/Word).</li>
+          <li>Modelos logit/probit, precios hedónicos.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- —— Habilidades —— -->
+    <h2 class="section">Habilidades</h2>
+    <section class="card">
+      <ul class="list">
+        <li><strong>Lenguajes</strong>: R (intermedio), Python (intermedio), LaTeX.</li>
+        <li><strong>Entornos</strong>: Stata (intermedio), E‑Views (básico).</li>
+        <li><strong>Software</strong>: Microsoft 365 avanzado; Excel (IFs, dashboards, bases de datos).</li>
+        <li><strong>Idiomas</strong>: Español (nativo), Inglés (B2).</li>
+      </ul>
+    </section>
+
+    <!-- —— Contacto —— -->
+    <h2 id="contacto" class="section">Contacto</h2>
+    <section class="card" aria-label="información de contacto">
+      <p>Ciudad de México, México · <a href="mailto:correo@dominio.com">correo@dominio.com</a> · <a href="tel:+520000000000">+52 00 00 00 00 00</a></p>
+      <p>
+        <a class="chip" href="cv.pdf" download>Descargar CV</a>
+        <!-- Agrega aquí tus redes: LinkedIn, Google Scholar, ORCID, GitHub -->
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="y"></span> Tu Nombre · Última actualización <time id="upd"></time></div>
+  </footer>
+
+  <script>
+    // Completa año y fecha de actualización
+    (function(){
+      const d = new Date();
+      document.getElementById('y').textContent = d.getFullYear();
+      document.getElementById('upd').textContent = d.toLocaleDateString('es-MX', { year:'numeric', month:'short', day:'2-digit' });
+    })();
+  </script>
+</body>
+</html>
