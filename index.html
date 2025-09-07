@@ -5,49 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jeanette Ortega – Página personal</title>
   <meta name="description" content="Página personal académica y profesional: intereses de investigación, educación, experiencia, publicaciones, proyectos y contacto." />
-  <meta name="theme-color" content="#f8bbd9" />
+  <meta name="theme-color" content="#1e40af" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='iconGrad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%231e40af;stop-opacity:1' /><stop offset='100%' style='stop-color:%233b82f6;stop-opacity:1' /></linearGradient></defs><rect width='32' height='32' fill='url(%23iconGrad)' rx='6'/><path d='M8 8h16v2H8zm0 4h16v2H8zm0 4h12v2H8zm0 4h8v2H8z' fill='white'/><circle cx='20' cy='20' r='3' fill='white' opacity='0.8'/></svg>">
   <meta property="og:title" content="Jeanette Ortega – Página personal" />
   <meta property="og:description" content="Investigación, docencia y proyectos." />
   <meta property="og:type" content="website" />
   <style>
     /* —— Diseño base accesible, responsive y con dark mode —— */
     :root{
-      --bg:#fef7f7; --fg:#1a0e1a; --muted:#5a3a4a; --line:#f4c2c2; --chip:#fce4ec; --accent:#f8bbd9;
-      --radius: 1.5rem;
-      --gradient: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 50%, #f48fb1 100%);
-      --shadow: 0 4px 20px rgba(244, 143, 177, 0.15);
-      --text-primary: #1a0e1a;
-      --text-secondary: #4a2c3a;
-      --text-muted: #6b4a5a;
+      --bg:#ffffff; --fg:#0f172a; --muted:#475569; --line:#e2e8f0; --chip:#f8fafc; --accent:#1e40af;
+      --radius: 0.5rem;
+      --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      --text-primary: #0f172a;
+      --text-secondary: #1e293b;
+      --text-muted: #475569;
+      --accent-light: #dbeafe;
+      --accent-dark: #1e3a8a;
     }
     @media (prefers-color-scheme: dark){
-      :root{ --bg:#2d1b2e; --fg:#fce4ec; --muted:#d4a5b8; --line:#4a2c3a; --chip:#3d2a3d; --accent:#f8bbd9; }
+      :root{ 
+        --bg:#0f172a; --fg:#f1f5f9; --muted:#94a3b8; --line:#334155; --chip:#1e293b; --accent:#3b82f6;
+        --text-primary: #f1f5f9;
+        --text-secondary: #cbd5e1;
+        --text-muted: #94a3b8;
+        --accent-light: #1e3a8a;
+        --accent-dark: #60a5fa;
+      }
     }
     *{ box-sizing: border-box }
     html, body{ height:100% }
     body{ 
       margin:0; 
-      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; 
-      background: linear-gradient(135deg, #fef7f7 0%, #fce4ec 100%);
+      font-family: 'Georgia', 'Times New Roman', serif; 
+      background: var(--bg);
       color:var(--fg); 
-      line-height:1.6;
-      position: relative;
-    }
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at 20% 80%, rgba(248, 187, 217, 0.1) 0%, transparent 50%),
-                  radial-gradient(circle at 80% 20%, rgba(244, 143, 177, 0.1) 0%, transparent 50%);
-      pointer-events: none;
-      z-index: -1;
+      line-height:1.7;
     }
     a{ color: var(--accent); text-decoration: none; transition: all 0.3s ease; }
-    a:hover{ color: #f48fb1; transform: translateY(-1px); }
-    img{ max-width:100%; height:auto; border-radius: 1rem; box-shadow: var(--shadow); }
+    a:hover{ color: var(--accent-dark); text-decoration: underline; }
+    img{ max-width:100%; height:auto; border-radius: var(--radius); box-shadow: var(--shadow); }
     .wrap{ max-width: 1024px; margin: 0 auto; padding: 1.25rem }
 
     /* —— Navegación —— */
@@ -56,93 +52,85 @@
       top:0; 
       z-index:10; 
       backdrop-filter: saturate(1.1) blur(15px); 
-      background: rgba(254, 247, 247, 0.9); 
-      border-bottom: 1px solid var(--line);
-      box-shadow: 0 2px 20px rgba(244, 143, 177, 0.1);
+      background: rgba(255, 255, 255, 0.95); 
+      border-bottom: 2px solid var(--line);
+      box-shadow: 0 2px 20px rgba(30, 64, 175, 0.08);
     }
     .nav{ display:flex; justify-content: space-between; align-items:center; gap:1rem }
     .brand a{ 
       text-decoration:none; 
       color:var(--fg); 
-      font-weight:800; 
-      font-size: 1.2rem;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-weight:700; 
+      font-size: 1.3rem;
+      font-family: 'Georgia', serif;
     }
     .menus{ display:flex; flex-wrap:wrap; gap:.5rem }
     .menus a{ 
       text-decoration:none; 
       color: var(--text-secondary); 
-      padding:.6rem 1rem; 
-      border-radius: 2rem;
+      padding:.5rem .8rem; 
+      border-radius: var(--radius);
       transition: all 0.3s ease;
       font-weight: 500;
+      font-size: 0.95rem;
     }
     .menus a[aria-current="page"], .menus a:hover{ 
-      background: var(--gradient); 
-      color: white; 
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
+      background: var(--accent-light); 
+      color: var(--accent-dark); 
+      text-decoration: none;
     }
 
     /* —— Hero —— */
     .hero{ 
       display:grid; 
-      grid-template-columns: 180px 1fr; 
+      grid-template-columns: 200px 1fr; 
       gap:2rem; 
       align-items:center; 
-      padding:2rem 0; 
-      background: linear-gradient(135deg, rgba(252, 228, 236, 0.3) 0%, rgba(248, 187, 217, 0.2) 100%);
+      padding:2.5rem 0; 
+      background: var(--chip);
       border-radius: var(--radius);
       margin-bottom: 2rem;
       box-shadow: var(--shadow);
+      border: 1px solid var(--line);
     }
     .avatar{ 
-      width:180px; 
+      width:200px; 
       aspect-ratio:1; 
       object-fit:cover; 
-      background: var(--gradient); 
-      border: 3px solid rgba(248, 187, 217, 0.3);
+      background: var(--accent); 
+      border: 3px solid var(--accent-light);
       border-radius: 50%;
-      box-shadow: 0 8px 32px rgba(244, 143, 177, 0.2);
-      transition: transform 0.3s ease;
-    }
-    .avatar:hover {
-      transform: scale(1.05);
+      box-shadow: var(--shadow);
     }
     .hero h1{ 
-      font-size: clamp(1.8rem, 2.5vw + 1.4rem, 2.8rem); 
+      font-size: clamp(2rem, 3vw + 1.5rem, 3rem); 
       margin:.25rem 0;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--text-primary);
       font-weight: 700;
+      font-family: 'Georgia', serif;
     }
     .subtitle{ 
       color: var(--text-secondary); 
       margin:0; 
       font-size: 1.1rem;
       font-weight: 500;
+      font-style: italic;
     }
     .badges{ display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1rem }
     .chip{ 
       display:inline-block; 
-      background: var(--gradient); 
-      color: white; 
-      border: none; 
-      padding:.4rem 1rem; 
-      border-radius: 2rem; 
-      font-size:.9rem;
+      background: var(--accent-light); 
+      color: var(--accent-dark); 
+      border: 1px solid var(--accent); 
+      padding:.4rem .8rem; 
+      border-radius: var(--radius); 
+      font-size:.85rem;
       font-weight: 500;
-      box-shadow: 0 2px 10px rgba(244, 143, 177, 0.2);
       transition: all 0.3s ease;
     }
     .chip:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(244, 143, 177, 0.3);
+      background: var(--accent);
+      color: white;
     }
 
     /* —— Secciones —— */
@@ -162,22 +150,20 @@
       left: 0;
       width: 3rem;
       height: 2px;
-      background: var(--gradient);
+      background: var(--accent);
       border-radius: 1px;
     }
     .card{ 
-      border: none; 
+      border: 1px solid var(--line); 
       border-radius: var(--radius); 
       padding:1.5rem; 
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(10px);
+      background: var(--bg);
       box-shadow: var(--shadow);
       transition: all 0.3s ease;
       color: var(--text-primary);
     }
     .card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(244, 143, 177, 0.2);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     }
     .grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap:1.5rem }
     .span-4{ grid-column: span 4 }
@@ -188,10 +174,11 @@
       position:relative; 
       margin-left:1rem; 
       padding-left:1.5rem;
-      background: rgba(255, 255, 255, 0.8);
+      background: var(--bg);
       border-radius: var(--radius);
       padding: 1.5rem;
       box-shadow: var(--shadow);
+      border: 1px solid var(--line);
       color: var(--text-primary);
     }
     .timeline:before{ 
@@ -201,23 +188,23 @@
       top:.5rem; 
       bottom:.5rem; 
       width:3px; 
-      background: var(--gradient);
+      background: var(--accent);
       border-radius: 2px;
     }
     .item{ 
       position:relative; 
       padding:1.5rem 0;
-      background: rgba(255, 255, 255, 0.9);
+      background: var(--chip);
       margin-bottom: 1rem;
-      border-radius: 1rem;
+      border-radius: var(--radius);
       padding: 1.5rem;
-      box-shadow: 0 2px 10px rgba(244, 143, 177, 0.1);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
       transition: all 0.3s ease;
       color: var(--text-primary);
     }
     .item:hover {
-      transform: translateX(5px);
-      box-shadow: 0 4px 20px rgba(244, 143, 177, 0.15);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     }
     .item:before{ 
       content:""; 
@@ -227,9 +214,9 @@
       width:1rem; 
       height:1rem; 
       border-radius:50%; 
-      background: var(--gradient);
-      border: 3px solid white;
-      box-shadow: 0 2px 10px rgba(244, 143, 177, 0.3);
+      background: var(--accent);
+      border: 3px solid var(--bg);
+      box-shadow: var(--shadow);
     }
     .head{ display:flex; align-items:baseline; justify-content:space-between; gap:1rem; flex-wrap:wrap }
     .title{ font-weight:700; margin:0; color: var(--fg); }
@@ -239,12 +226,11 @@
 
     /* —— Footer —— */
     footer{ 
-      border-top: 1px solid var(--line); 
+      border-top: 2px solid var(--line); 
       margin-top:3rem; 
       padding:2rem 0; 
       color: var(--text-muted);
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(10px);
+      background: var(--chip);
       text-align: center;
       font-weight: 500;
     }
@@ -258,7 +244,7 @@
         gap: 1.5rem;
       }
       .avatar {
-        width: 150px;
+        width: 180px;
         margin: 0 auto;
       }
       .badges{ justify-content:center }
@@ -307,7 +293,7 @@
         <a href="#publications">Publicaciones</a>
         <a href="#projects">Proyectos</a>
         <a href="#contacto">Contacto</a>
-        <a href="cv.pdf" download>CV</a>
+        <a href="cv.pdf" download>📄 CV</a>
       </nav>
     </div>
   </header>
@@ -315,10 +301,7 @@
   <main class="wrap">
     <!-- —— Encabezado / About —— -->
     <section id="about" class="hero" aria-label="presentación">
-      <!-- Opcional: coloca tu foto en /img/foto.jpg y descomenta la línea siguiente -->
-      <!-- <img class="avatar" src="img/foto.jpg" alt="Retrato de Tu Nombre"> -->
-      <img class="avatar" alt="Avatar" src="data:image/svg+xml;utf8,\
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%23fce4ec;stop-opacity:1' /><stop offset='50%' style='stop-color:%23f8bbd9;stop-opacity:1' /><stop offset='100%' style='stop-color:%23f48fb1;stop-opacity:1' /></linearGradient></defs><rect width='100%' height='100%' fill='url(%23grad)' rx='100'/><circle cx='100' cy='80' r='25' fill='white' opacity='0.8'/><circle cx='100' cy='120' r='35' fill='white' opacity='0.6'/><text x='50%' y='170' font-size='14' font-family='Arial, Helvetica, sans-serif' text-anchor='middle' fill='white' font-weight='bold'>✨ Jeanette ✨</text></svg>"> 
+      <img class="avatar" src="foto.jpeg" alt="Retrato de Jeanette Ortega"> 
       <div>
         <h1>Jeanette Ortega</h1>
         <p class="subtitle">Estudiante de Economía (UNAM) · Investigación aplicada · Docencia</p>
@@ -434,9 +417,9 @@
     <!-- —— Contacto —— -->
     <h2 id="contacto" class="section">Contacto</h2>
     <section class="card" aria-label="información de contacto">
-      <p>Ciudad de México, México · <a href="mailto:correo@dominio.com">correo@dominio.com</a> · <a href="tel:+520000000000">+52 00 00 00 00 00</a></p>
+      <p>Ciudad de México, México · <a href="mailto:jeanette.ortega@economia.unam.mx">jeanette.ortega@economia.unam.mx</a></p>
       <p>
-        <a class="chip" href="cv.pdf" download>Descargar CV</a>
+        <a class="chip" href="cv.pdf" download>📄 Descargar CV</a>
         <!-- Agrega aquí tus redes: LinkedIn, Google Scholar, ORCID, GitHub -->
       </p>
     </section>
