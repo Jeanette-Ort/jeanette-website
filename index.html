@@ -3,19 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tu Nombre – Página personal</title>
+  <title>Jeanette Ortega – Página personal</title>
   <meta name="description" content="Página personal académica y profesional: intereses de investigación, educación, experiencia, publicaciones, proyectos y contacto." />
   <meta name="theme-color" content="#f8bbd9" />
-  <meta property="og:title" content="Tu Nombre – Página personal" />
+  <meta property="og:title" content="Jeanette Ortega – Página personal" />
   <meta property="og:description" content="Investigación, docencia y proyectos." />
   <meta property="og:type" content="website" />
   <style>
     /* —— Diseño base accesible, responsive y con dark mode —— */
     :root{
-      --bg:#fef7f7; --fg:#2d1b2e; --muted:#8b5a6b; --line:#f4c2c2; --chip:#fce4ec; --accent:#f8bbd9;
+      --bg:#fef7f7; --fg:#1a0e1a; --muted:#5a3a4a; --line:#f4c2c2; --chip:#fce4ec; --accent:#f8bbd9;
       --radius: 1.5rem;
       --gradient: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 50%, #f48fb1 100%);
       --shadow: 0 4px 20px rgba(244, 143, 177, 0.15);
+      --text-primary: #1a0e1a;
+      --text-secondary: #4a2c3a;
+      --text-muted: #6b4a5a;
     }
     @media (prefers-color-scheme: dark){
       :root{ --bg:#2d1b2e; --fg:#fce4ec; --muted:#d4a5b8; --line:#4a2c3a; --chip:#3d2a3d; --accent:#f8bbd9; }
@@ -71,7 +74,7 @@
     .menus{ display:flex; flex-wrap:wrap; gap:.5rem }
     .menus a{ 
       text-decoration:none; 
-      color:var(--muted); 
+      color: var(--text-secondary); 
       padding:.6rem 1rem; 
       border-radius: 2rem;
       transition: all 0.3s ease;
@@ -119,7 +122,7 @@
       font-weight: 700;
     }
     .subtitle{ 
-      color:var(--muted); 
+      color: var(--text-secondary); 
       margin:0; 
       font-size: 1.1rem;
       font-weight: 500;
@@ -146,7 +149,7 @@
     h2.section{ 
       font-size:1.1rem; 
       letter-spacing:.1em; 
-      color:var(--muted); 
+      color: var(--text-secondary); 
       text-transform:uppercase; 
       margin:2rem 0 1rem;
       font-weight: 600;
@@ -166,10 +169,11 @@
       border: none; 
       border-radius: var(--radius); 
       padding:1.5rem; 
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
       transition: all 0.3s ease;
+      color: var(--text-primary);
     }
     .card:hover {
       transform: translateY(-2px);
@@ -184,10 +188,11 @@
       position:relative; 
       margin-left:1rem; 
       padding-left:1.5rem;
-      background: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.8);
       border-radius: var(--radius);
       padding: 1.5rem;
       box-shadow: var(--shadow);
+      color: var(--text-primary);
     }
     .timeline:before{ 
       content:""; 
@@ -202,12 +207,13 @@
     .item{ 
       position:relative; 
       padding:1.5rem 0;
-      background: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.9);
       margin-bottom: 1rem;
       border-radius: 1rem;
       padding: 1.5rem;
       box-shadow: 0 2px 10px rgba(244, 143, 177, 0.1);
       transition: all 0.3s ease;
+      color: var(--text-primary);
     }
     .item:hover {
       transform: translateX(5px);
@@ -227,7 +233,7 @@
     }
     .head{ display:flex; align-items:baseline; justify-content:space-between; gap:1rem; flex-wrap:wrap }
     .title{ font-weight:700; margin:0; color: var(--fg); }
-    .meta{ color:var(--muted); font-size:.95rem; font-weight: 500; }
+    .meta{ color: var(--text-muted); font-size:.95rem; font-weight: 500; }
     .list{ margin:.6rem 0 0 1.2rem }
     .list li{ margin:.4rem 0; line-height: 1.6; }
 
@@ -236,8 +242,8 @@
       border-top: 1px solid var(--line); 
       margin-top:3rem; 
       padding:2rem 0; 
-      color:var(--muted);
-      background: rgba(255, 255, 255, 0.5);
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(10px);
       text-align: center;
       font-weight: 500;
@@ -280,7 +286,7 @@
   {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Tu Nombre",
+    "name": "Jeanette Ortega",
     "jobTitle": "Estudiante de Economía / Investigadora",
     "email": "mailto:correo@dominio.com",
     "telephone": "+52 000 000 0000",
@@ -292,7 +298,7 @@
 <body>
   <header>
     <div class="wrap nav">
-      <div class="brand"><a href="index.html">Tu Nombre</a></div>
+      <div class="brand"><a href="index.html">Jeanette Ortega</a></div>
       <nav class="menus" aria-label="principal">
         <a href="#about" aria-current="page">Inicio</a>
         <a href="#research">Intereses</a>
@@ -312,9 +318,9 @@
       <!-- Opcional: coloca tu foto en /img/foto.jpg y descomenta la línea siguiente -->
       <!-- <img class="avatar" src="img/foto.jpg" alt="Retrato de Tu Nombre"> -->
       <img class="avatar" alt="Avatar" src="data:image/svg+xml;utf8,\
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%23fce4ec;stop-opacity:1' /><stop offset='50%' style='stop-color:%23f8bbd9;stop-opacity:1' /><stop offset='100%' style='stop-color:%23f48fb1;stop-opacity:1' /></linearGradient></defs><rect width='100%' height='100%' fill='url(%23grad)' rx='100'/><circle cx='100' cy='80' r='25' fill='white' opacity='0.8'/><circle cx='100' cy='120' r='35' fill='white' opacity='0.6'/><text x='50%' y='170' font-size='14' font-family='Arial, Helvetica, sans-serif' text-anchor='middle' fill='white' font-weight='bold'>✨ Tu Foto ✨</text></svg>"> 
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%23fce4ec;stop-opacity:1' /><stop offset='50%' style='stop-color:%23f8bbd9;stop-opacity:1' /><stop offset='100%' style='stop-color:%23f48fb1;stop-opacity:1' /></linearGradient></defs><rect width='100%' height='100%' fill='url(%23grad)' rx='100'/><circle cx='100' cy='80' r='25' fill='white' opacity='0.8'/><circle cx='100' cy='120' r='35' fill='white' opacity='0.6'/><text x='50%' y='170' font-size='14' font-family='Arial, Helvetica, sans-serif' text-anchor='middle' fill='white' font-weight='bold'>✨ Jeanette ✨</text></svg>"> 
       <div>
-        <h1>Tu Nombre</h1>
+        <h1>Jeanette Ortega</h1>
         <p class="subtitle">Estudiante de Economía (UNAM) · Investigación aplicada · Docencia</p>
         <div class="badges" aria-label="áreas e intereses">
           <span class="chip">Política fiscal</span>
@@ -437,7 +443,7 @@
   </main>
 
   <footer>
-    <div class="wrap">© <span id="y"></span> Tu Nombre · Última actualización <time id="upd"></time></div>
+    <div class="wrap">© <span id="y"></span> Jeanette Ortega · Última actualización <time id="upd"></time></div>
   </footer>
 
   <script>
